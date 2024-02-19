@@ -1,4 +1,5 @@
 from datetime import datetime
+from task_manager import add_task,delete_task
 
 class TodoList:
     def __init__(self):
@@ -40,8 +41,10 @@ def main():
         choice = input("Seleccione una opción: ")
 
         if choice == "1":
-            task = input("Ingrese la nueva tarea: ")
-            todo_list.add_task(task)
+            name = input("Ingrese el nombre de la nueva tarea: ")
+            time = input("Ingrese la hora de la nueva tarea: ")
+            state = "Nueva"
+            add_task(todo_list, name, time, state)
             print("Tarea agregada con éxito.")
         elif choice == "2":
             index = int(input("Ingrese el número de la tarea a marcar como completada: ")) - 1
@@ -53,7 +56,7 @@ def main():
             print("Tarea marcada como pendiente.")
         elif choice == "4":
             index = int(input("Ingrese el número de la tarea a eliminar: ")) - 1
-            todo_list.delete_task(index)
+            delete_task(todo_list,index)
             print("Tarea eliminada.")
         elif choice == "5":
             todo_list.generate_report()
